@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Glider.js Example</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glider-js/glider.min.css">
+  <style>
+    .glider-contain {
+      width: 90%;
+      margin: auto;
+    }
+
+    .glider {
+      display: flex;
+    }
+
+    .glider div {
+      background: #f4f4f4;
+      height: 200px;
+      width: 200px;
+      margin: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 5px;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+  <h2>Glider.js Example</h2>
+  <div class="glider-contain">
+    <div class="glider">
+      <div>Product 1</div>
+      <div>Product 2</div>
+      <div>Product 3</div>
+      <div>Product 4</div>
+      <div>Product 1</div>
+      <div>Product 2</div>
+      <div>Product 3</div>
+      <div>Product 4</div>
+      <div>Product 1</div>
+      <div>Product 2</div>
+      <div>Product 3</div>
+      <div>Product 4</div>
+    </div>
+    <button role="button" aria-label="Previous" class="glider-prev">«</button>
+    <button role="button" aria-label="Next" class="glider-next">»</button>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/glider-js/glider.min.js"></script>
+  <script>
+    new Glider(document.querySelector('.glider'), {
+      slidesToShow: 4,
+      slidesToScroll: 1,
+      draggable: true,
+      arrows: {
+        prev: '.glider-prev',
+        next: '.glider-next',
+      },
+    });
+  </script>
+</body>
+</html>

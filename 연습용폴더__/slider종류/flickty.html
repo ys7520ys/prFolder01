@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flickity Example</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flickity/2.3.0/flickity.min.css">
+  <style>
+    .carousel {
+      background: #fafafa;
+      margin: auto;
+      width: 90%;
+      height: 300px;
+    }
+
+    .carousel-cell {
+      width: 25%;
+      height: 100%;
+      margin-right: 10px;
+      background: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 20px;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h2>Flickity Example</h2>
+  <div class="carousel">
+    <div class="carousel-cell">Product 1</div>
+    <div class="carousel-cell">Product 2</div>
+    <div class="carousel-cell">Product 3</div>
+    <div class="carousel-cell">Product 4</div>
+    <div class="carousel-cell">Product 1</div>
+    <div class="carousel-cell">Product 2</div>
+    <div class="carousel-cell">Product 3</div>
+    <div class="carousel-cell">Product 4</div>
+    <div class="carousel-cell">Product 1</div>
+    <div class="carousel-cell">Product 2</div>
+    <div class="carousel-cell">Product 3</div>
+    <div class="carousel-cell">Product 4</div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/flickity/2.3.0/flickity.pkgd.min.js"></script>
+  <script>
+    const flickity = new Flickity('.carousel', {
+      cellAlign: 'left',
+      contain: true,
+      draggable: true,
+      pageDots: false,
+      groupCells: true,
+    });
+  </script>
+</body>
+</html>

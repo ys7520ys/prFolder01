@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Popstate Alert</title>
+</head>
+<body>
+  <h1>Popstate Event Example</h1>
+  <p>뒤로 가기 또는 앞으로 가기를 누르면 알림(alert)이 표시됩니다.</p>
+  <button onclick="navigateToPage()">페이지 이동</button>
+
+  <script>
+    // 뒤로 가기/앞으로 가기 이벤트 감지
+    window.addEventListener('popstate', (event) => {
+      alert('뒤로 가기 또는 앞으로 가기 버튼이 눌렸습니다.');
+    });
+
+    // 페이지 이동 (히스토리에 상태 추가)
+    function navigateToPage() {
+      history.pushState({ page: 2 }, "Title", "?page=2");
+      alert("페이지 상태가 추가되었습니다. 뒤로 가기를 눌러보세요!");
+    }
+  </script>
+</body>
+</html>

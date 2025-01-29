@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background-color: #f0f0f0;
+      margin: 0;
+      overflow: hidden;
+    }
+    .magnet {
+      display: inline-block;
+      padding: 20px 40px;
+      background-color: #007bff;
+      color: white;
+      font-size: 20px;
+      font-weight: bold;
+      border-radius: 8px;
+      transition: transform 0.3s ease, scale 0.2s ease;
+    }
+    .magnet:hover{
+      scale: 1.2;
+    }
+  </style>
+</head>
+<body>
+  <div class="magnet">
+    Hover me!
+  </div>
+  <script>
+    const magnet = document.querySelector(".magnet");
+    const strength = 0.3; // 자석 효과의 강도 조절
+
+    document.addEventListener("mousemove", (e) => {
+      const rect = magnet.getBoundingClientRect();
+      const magnetCenterX = rect.left + rect.width / 2;
+      const magnetCenterY = rect.top + rect.height / 2;
+
+      const distX = e.clientX - magnetCenterX;
+      const distY = e.clientY - magnetCenterY;
+
+      const distance = Math.sqrt(distX * distX + distY * distY);
+
+      if (distance < 150) { // 자석 효과가 발생하는 거리
+        magnet.style.transform = `translate(${distX * strength}px, ${distY * strength}px) scale(1.05)`;
+      } else {
+        magnet.style.transform = "translate(0, 0) scale(1)";
+      }
+    });
+
+  </script>
+</body>
+</html>

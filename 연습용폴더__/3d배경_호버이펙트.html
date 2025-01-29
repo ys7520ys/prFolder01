@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3D 깊이 효과</title>
+<style>
+  /* 컨테이너에 3D 관점을 주기 위해 perspective를 설정합니다 */
+  .container {
+    perspective: 800px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  /* 3D 효과를 주는 카드 스타일 */
+  .card {
+    position: relative;
+    width: 800px;
+    height: 600px;
+    background: #3498db;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5em;
+    font-weight: bold;
+    border-radius: 10px;
+    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.2);
+    transform-style: preserve-3d;
+    transition: transform 0.5s;
+  }
+  .text{
+    color: black;
+    /* border: solid 1px red; */
+    font-size: 80px;
+    position: absolute;
+    top: 10%;
+    transition: 0.5s;
+    transition: font-size 0.5s;
+    transform: translate(-10%);
+  }
+  .text:nth-child(1){
+    top: 10%;
+    transform: translate(-10%);
+  }
+  .text:nth-child(2){
+    top: 40%;
+    transform: translate(-40%);
+  }
+  .text:nth-child(3){
+    top: 70%;
+    transform: translate(-70%);
+  }
+
+  /* 호버할 때 카드 회전 효과 */
+  .card:hover {
+    transform: rotateY(20deg) rotateX(10deg);
+  }
+
+  /* 텍스트 반대 회전 및 깊이 효과 */
+  .card .text {
+    transform: rotateY(0deg) rotateX(0deg) translateZ(40px); /* 카드보다 깊이 있게 배치 */
+    transition: transform 0.5s;
+  }
+
+  /* 카드 호버 시 텍스트가 반대로 회전되는 효과 */
+  .card:hover .text {
+    transform: translateZ(120px);
+    /*transform: rotateY(20deg) rotateX(10deg) translateZ(20px);*/
+    
+  }
+  .text:hover{
+    background-color: white;
+
+  }
+  .text:active{
+    font-size: 100px;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <div class="card">
+    <div class="text">야 뭐하니?</div>
+    <div class="text">지금 잠이와?</div>
+    <div class="text">ㄹㅇㅋㅋ</div>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Owl Carousel Example</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+  <style>
+    .owl-carousel .item {
+      background: #f4f4f4;
+      text-align: center;
+      height: 200px;
+      line-height: 200px;
+      font-size: 20px;
+      margin: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h2>Owl Carousel Example</h2>
+  <div class="owl-carousel owl-theme">
+    <div class="item">Product 1</div>
+    <div class="item">Product 2</div>
+    <div class="item">Product 3</div>
+    <div class="item">Product 4</div>
+    <div class="item">Product 5</div>
+    <div class="item">Product 6</div>
+    <div class="item">Product 7</div>
+    <div class="item">Product 8</div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+  <script>
+    $('.owl-carousel').owlCarousel({
+      loop: false,
+      margin: 10,
+      nav: true,
+      responsive: {
+        0: { items: 1 },
+        600: { items: 2 },
+        1000: { items: 3 }
+      }
+    });
+  </script>
+</body>
+</html>

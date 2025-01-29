@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3D Plate</title>
+  <style>
+    /* 컨테이너: 3D 효과를 위한 회전 */
+    .plate-container {
+      perspective: 1000px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    /* 접시: 파인 부분을 표현하는 원 */
+    .plate {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      background: radial-gradient(circle at center, #ddd, #ccc 40%, #999 60%, #555);
+      position: relative;
+      transform: rotateX(25deg) rotateY(0deg);
+      box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    /* 접시의 움푹 파인 부분을 표현하는 내부 그림자 */
+    .plate::before {
+      content: '';
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      background: radial-gradient(circle at center, rgba(255, 255, 255, 0.6), rgba(0, 0, 0, 0.1));
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      box-shadow: inset 0px 10px 15px rgba(0, 0, 0, 0.2);
+    }
+  </style>
+</head>
+<body>
+  <div class="plate-container">
+    <div class="plate"></div>
+  </div>
+</body>
+</html>

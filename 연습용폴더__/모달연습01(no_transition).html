@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Basic Modal Example</title>
+<style>
+  /* 오버레이 스타일 */
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* 반투명 배경 */
+    display: none; /* 초기 상태는 숨김 */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+
+  /* 모달 스타일 */
+  .modal {
+    background: white;
+    padding: 20px;
+    width: 300px;
+    max-width: 90%;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+  }
+
+  .modal h2 {
+    margin-top: 0;
+  }
+
+  /* 닫기 버튼 스타일 */
+  .close-btn {
+    margin-top: 10px;
+    cursor: pointer;
+    color: #333;
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+  }
+</style>
+</head>
+<body>
+
+<!-- 모달 버튼 -->
+<button id="openModal">Open Modal</button>
+
+<!-- 모달 오버레이 -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <h2 id="modalTitle">Modal Title</h2>
+    <p>This is the modal content.</p>
+    <button class="close-btn" id="closeModal">Close</button>
+  </div>
+</div>
+
+<!-- JavaScript로 모달 열기 및 닫기 제어 -->
+<script>
+  const openModal = document.getElementById('openModal'); // 모달 열기(button)
+  const closeModal = document.getElementById('closeModal'); // 모달 닫기(button)
+  const modalOverlay = document.getElementById('modalOverlay'); // 모달의 전체 영역
+
+  // 열기 버튼을 눌렀을 때
+  openModal.addEventListener('click', () => { // 클릭을 진행하면 함수의 값이 실행된다.
+    modalOverlay.style.display = 'flex'; // 모달 열기
+    document.body.style.overflow = 'hidden'; // 배경 스크롤 제한
+  });
+
+  // 닫기 버튼을 눌렀을 때
+  closeModal.addEventListener('click', () => {
+    modalOverlay.style.display = 'none'; // 모달 닫기
+    document.body.style.overflow = 'auto'; // 배경 스크롤 복원
+  });
+
+  // ESC 키로 모달 닫기
+    // 웹 접근성을 향상시키기 위해서 esc로 창을 닫도록 구성
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      modalOverlay.style.display = 'none';
+      document.body.style.overflow = 'auto';
+    }
+  });
+</script>
+
+</body>
+</html>

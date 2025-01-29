@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smooth Scroll Example</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.3/dist/locomotive-scroll.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.2/dist/locomotive-scroll.min.js"></script>
+  <script src="script/script.js" defer></script>
+  <!-- L> defer의 값을 통해서 DOM이 생성될 때까지 script의 동작을 지연시킨다. 그래서 상단에 이러한 script의 값을 선언해도 제대로 동작한다 -->
+
+
+  <style>
+
+  </style>
+</head>
+<body data-scroll-container>
+
+<!-- 초기에 웹표준 웹접근성을 준수하지 않은 HTML형태 -->
+<!-- ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ -->
+
+  <!-- role="status": 실시간으로 변하는 것을 알린다. -->
+  <!-- <div class="loadingOverlay"></div> -->
+
+  <!-- <div class="content A" data-scroll-section data-scroll-speed="">
+    <div class="text">
+      Hello, GSAP World!
+    </div>
+    <div class="fontSizeCheck">감각적이고 의미 있는, <br>통합 크리에이티브 전략 기반의</div>
+    <div class="typing-text" id="typingText"></div>
+  </div>
+  <div class="content B" data-scroll-section data-scroll-speed="">
+    <div class="div">
+      <div class="box one">
+        <h1>ONE</h1>
+        <p>
+          모바일 타겟 마케팅은 다양한 변수를 기반으로 고객을 세분화하여 맞춤형 광고를 노출하는 효과적인 방법이다. 이동 통신사, 카드사 등 광고 수신 동의 고객들의 연령, 성별, 지역 등 인구통계학적 타겟은 기본으로 하고 빅데이터 기반 고객 관심사, 상품 구매 이력 및 웹, 앱 접속 이력, 라이프 스타일, 통신 이력 등 사용자 이용패턴을 파악한 코어타겟에게 메시지를 발송합니다
+        </p>
+      </div>
+      <div class="box two">
+        <h1>TWO</h1>
+        <p>
+          모바일 타겟 마케팅은 다양한 변수를 기반으로 고객을 세분화하여 맞춤형 광고를 노출하는 효과적인 방법이다. 이동 통신사, 카드사 등 광고 수신 동의 고객들의 연령, 성별, 지역 등 인구통계학적 타겟은 기본으로 하고 빅데이터 기반 고객 관심사, 상품 구매 이력 및 웹, 앱 접속 이력, 라이프 스타일, 통신 이력 등 사용자 이용패턴을 파악한 코어타겟에게 메시지를 발송합니다
+        </p>
+      </div>
+      <div class="box three">
+        <h1>THREE</h1>
+        <p>
+          모바일 타겟 마케팅은 다양한 변수를 기반으로 고객을 세분화하여 맞춤형 광고를 노출하는 효과적인 방법이다. 이동 통신사, 카드사 등 광고 수신 동의 고객들의 연령, 성별, 지역 등 인구통계학적 타겟은 기본으로 하고 빅데이터 기반 고객 관심사, 상품 구매 이력 및 웹, 앱 접속 이력, 라이프 스타일, 통신 이력 등 사용자 이용패턴을 파악한 코어타겟에게 메시지를 발송합니다
+        </p>
+      </div>
+    </div>
+
+  </div>
+  <div class="content C" data-scroll-section data-scroll-speed="">
+    Slow Scrolling Section
+  </div>
+
+  <div class="content D" data-scroll-section data-scroll-speed="">
+  </div> -->
+<!-- ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 여기서 사용한 웹표준과 웹접근성에 대한 설명 -->
+<!-- ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ -->
+  <!-- role, aira-live, aria-label, aria-labelledby -->
+    <!-- role
+          사용목적:
+            요소의 역할(기능)을 명시한다. 
+          
+          예시:
+            버튼, 다이얼로그, 알림 등의 요소가 HTML태그로 명확하지 않은 경우
+
+            <div role="button">클릭하세요</div>
+            L> 사용자가 해당 요소가 버튼의 기능을 가진다는 것을 바로 알 수 있다.
+    -->
+
+    <!-- aira-live
+          사용목적:
+            동적으로 변경되는 콘텐츠의 중요도를 정의하여 보조 기술이 사용자에게 업데이트를 알릴 수 있게 만든다.
+
+          예시:
+            새로운 알림, 채팅 메세지, 실시간 업데이트 영역
+
+            <div aira-live="polite">새로운 알림이 있습니다</div>
+            L> polite: 업데이트 내용을 부드럽게 알려줌
+            L> assertive: 즉시 사용자에게 업데이트를 알림
+    -->
+    
+    <!-- aira-label
+          레이블이 없다는 의미
+            1.텍스트가 존재하지 않는 요소
+                아이콘 버튼이나 이미지 버튼처럼 시각적으는 그림만 있고, 텍스트가 포함되지 않은 경우
+                이러한 경우에 스크린리더는 아이콘만으로 버튼의 의미를 알 수 없기 때문에 aira-label을 통해서 레이블을 제공해야 한다.
+            
+            2.역할을 알 수 없는 경우
+                HTML요소가 버튼이나 링크 등의 역할을 하는데, 그 기능이 시각적으로 드러나지 않는 경우
+                ex <div>나 <span>을 버튼처럼 사용할 때 role="button"과 함께 aria-label을 추가하여 스크린리더가 기능을 이해할 수 있도록 해야 한다.
+
+            3.시각적인 설명이 부족한 경우
+                요소에 시각적인 레이블(텍스트)가 있다고 하더라도, 의미를 정확히 하기 위해서 추가 설명이 필요한 경우에도 aira-label을 사용한다.
+                ex.1 
+                  <button aria-label="검색">
+                    <img src="search-icon.png" alt="">
+                  </button>
+                L> 버튼에 특정한 텍스트가 존재하지 않지만 사용자가 이러한 요소가 버튼의 기능을 한다는 것을 알 수 있게 된다
+
+                ex.2
+                  <div role="button" aria-label="닫기">×</div>    
+                L> aria-label을 통해서 해당 요소가 닫기 기능을 한다는 것을 알 수 있다.
+    -->
+
+    <!-- aria-labelledby
+          사용목적:
+            특정 요소의 레이블을 다른 요소의 텍스트와 연결하여 정보를 제공한다.
+          
+          예시
+            <h2 id="section-title">제품 정보</h2>
+            <div role="region" aria-labelledby="section-title">제품 설명 내용</div>
+            L> 상단의 요소는 "제품 정보"를 가진 제목 요소로만 인식되는 것이고, 하단의 요소는 div요소만 스크린리더에서 "제품정보"라는 레이블로 인식된다.
+            L> 스크린리더가 div 영역을 "제품정보"로 이해하고, 사용자가 해당 영역의 목적을 쉽게 알 수 있게 만든다.
+
+          L> 상단의 요소와 하단의 요소는 개별적으로 인식되며, 두 요소가 같은 텍스트를 가지고 있어도 상호 간섭 없이 동작한다.
+    -->
+<!-- ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ -->
+
+
+
+
+
+  <!-- 웹 표준과 웹 접근성을 준수하면서 수정한 HTML값 -->
+  <header class="header" role="banner" aria-label="ScrollHeader">SCROLL HEADER</header>
+    <!-- 초기 blur효과 요소-->
+  <div id="loadingOverlay" role="status" aria-live="polite" aria-label="페이지 로딩 중입니다."></div>
+
+  <main role="main">
+    <section class="content A" data-scroll-section data-scroll-speed="">
+        <h2 class="text">Hello, GSAP World!</h2>
+        <p class="fontSizeCheck">감각적이고 의미 있는, <br>통합 크리에이티브 전략 기반의</p>
+        <div class="typing-text" id="typingText" aria-live="polite"></div>
+        <!-- aria-live의 값으로 구성하여  -->
+    </section>
+
+    <section class="content B" data-scroll-section data-scroll-speed="">
+        <div class="div">
+            <article class="box one" aria-labelledby="heading-one">
+                <h3 id="heading-one">ONE</h3>
+                <p>대한민국의 경제질서는 개인과 기업의 경제상의 자유와 창의를 존중함을 기본으로 한다. 모든 국민은 통신의 비밀을 침해받지 아니한다. 각급 선거관리위원회는 선거인명부의 작성등 선거사무와 국민투표사무에 관하여 관계 행정기관에 필요한 지시를 할 수 있다.</p>
+            </article>
+
+            <article class="box two" aria-labelledby="heading-two">
+                <h3 id="heading-two">TWO</h3>
+                <p>대통령은 제1항과 제2항의 처분 또는 명령을 한 때에는 지체없이 국회에 보고하여 그 승인을 얻어야 한다. 농업생산성의 제고와 농지의 합리적인 이용을 위하거나 불가피한 사정으로 발생하는 농지의 임대차와 위탁경영은 법률이 정하는 바에 의하여 인정된다.</p>
+            </article>
+
+            <article class="box three" aria-labelledby="heading-three">
+                <h3 id="heading-three">THREE</h3>
+                <p>언론·출판에 대한 허가나 검열과 집회·결사에 대한 허가는 인정되지 아니한다. 형사피의자 또는 형사피고인으로서 구금되었던 자가 법률이 정하는 불기소처분을 받거나 무죄판결을 받은 때에는 법률이 정하는 바에 의하여 국가에 정당한 보상을 청구할 수 있다.</p>
+            </article>
+        </div>
+    </section>
+
+    <section class="content C" data-scroll-section data-scroll-speed="">
+        <p>Slow Scrolling Section</p>
+    </section>
+
+    <section class="content D" data-scroll-section data-scroll-speed="">
+    </section>
+</main>
+
+  <!-- Locomotive Scroll 스크립트 -->
+
+    <!-- jsDelivr 사이트에서 이러한 cdn의 값을 가져올 수 있다. 추가적으로 다른 다양한 것들도 존재한다 -->
+    <!-- https://www.jsdelivr.com/package/npm/locomotive-scroll -->
+      <!-- Locomotive Scroll을 사용함으로 브라우저의 스크롤바가 화면에 나타나지 않는다. -->
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script> -->
+  <script>
+
+  </script>
+</body>
+</html>

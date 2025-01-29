@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Real-time Price Calculator</title>
+</head>
+<body>
+  <div>
+    <p id="product-price" data-unit-price="25000">₩25,000</p>
+    <input type="number" id="product-quantity" min="1" value="1">
+  </div>
+
+  <script>
+    document.getElementById("product-quantity").addEventListener("input", function () {
+      const quantity = parseInt(this.value, 10); // 입력된 개수를 정수로 변환
+      const unitPrice = parseInt(document.getElementById("product-price").getAttribute("data-unit-price"), 10); // 단위 가격 가져오기
+
+      if (!isNaN(quantity) && quantity > 0) {
+        const totalPrice = unitPrice * quantity; // 총 가격 계산
+        document.getElementById("product-price").textContent = `₩${totalPrice.toLocaleString()}`; // 포맷된 가격 업데이트
+      }
+    });
+  </script>
+</body>
+</html>

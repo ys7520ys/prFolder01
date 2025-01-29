@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tab Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .tabs {
+            display: flex;
+            margin-bottom: 10px;
+        }
+        .tab {
+            margin-right: 10px;
+            cursor: pointer;
+            padding: 10px 15px;
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .tab.active {
+            background-color: #ddd;
+        }
+        .content {
+            display: none;
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 5px;
+        }
+        .content.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="tabs">
+        <div class="tab" data-target="detail">상세페이지</div>
+        <div class="tab" data-target="review">리뷰</div>
+        <div class="tab" data-target="qna">Q&A</div>
+    </div>
+    <div class="tab-content">
+        <div id="detail" class="content active">여기는 상세페이지 내용입니다.</div>
+        <div id="review" class="content">여기는 리뷰 내용입니다.</div>
+        <div id="qna" class="content">여기는 Q&A 내용입니다.</div>
+    </div>
+
+    <script>
+      const tabs = document.querySelectorAll('.tab');
+      const contents = document.querySelectorAll('.content');
+
+      tabs.forEach((tab) => {
+        tab.addEventListener('click', () => {
+          // Reset active classes
+          tabs.forEach((t) => t.classList.remove('active'));
+          contents.forEach((c) => c.classList.remove('active'));
+          
+          // Add active class to the clicked tab and the corresponding content
+          tab.classList.add('active');
+          document.getElementById(tab.dataset.target).classList.add('active');
+        });
+      });
+    </script>
+</body>
+</html>

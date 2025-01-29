@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>Hide & Show Header</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    .header {
+      width: 100%;
+      height: 60px;
+      background-color: #333;
+      color: #fff;
+      padding: 15px;
+      position: fixed;
+      /* header를 fixed로 설정하여 위치를 고정하였다. */
+      top: 0;
+      left: 0;
+      transition: top 0.7s ease;
+      /* header가 화면에서 사라질 때 부드럽게 사라지게 만들기 위해서 transition을 적용하였다. */
+    }
+
+    .content {
+      padding-top: 60px; /* 헤더 높이만큼 여백을 줍니다. */
+        /* 전체 배경 요소에서 상단에 padding을 주고 스크롤이 발생하면 상단의 padding을 제거하여 보이지 않게 구성할 것이다. */
+      height: 100vh; /* 긴 내용을 넣어 스크롤이 발생하도록 합니다. */
+      background-color: #bb3636;
+    }
+  </style>
+</head>
+<body>
+  <header class="header">스크롤 헤더</header>
+  <main>
+    <section class="content">
+      <p>여기에 컨텐츠를 추가하세요...</p>
+      <!-- 긴 내용을 채워 스크롤이 필요하도록 합니다. -->
+    </section>
+    <section class="content">
+      <p>여기에 컨텐츠를 추가하세요...</p>
+      <!-- 긴 내용을 채워 스크롤이 필요하도록 합니다. -->
+    </section>
+    <section class="content">
+      <p>여기에 컨텐츠를 추가하세요...</p>
+      <!-- 긴 내용을 채워 스크롤이 필요하도록 합니다. -->
+    </section>
+  </main>
+  <script>
+    // 이전 스크롤 위치를 저장할 변수
+    let lastScrollY = window.scrollY;
+
+    // 스크롤이 발생하면 {} 안의 값이 실행된다.
+    window.addEventListener('scroll', () => {
+      const header = document.querySelector('.header');
+      // header 요소를 변수에 저장하여 사용할 것이다.
+
+      if (window.scrollY > lastScrollY) {
+          //  1. lastScrollY에 이전에 스크롤을 진행한 위치를 저장한다.
+          //  2. 현재 스크롤 위치가 이전보다 크면(아래로 스크롤 진행 중이면) 헤더를 숨기고, 작아지면(위로 스크롤 진행 중이면) 헤더를 보여준다.
+
+        // 스크롤 다운 -> 헤더 숨기기
+        header.style.top = '-60px'; // 헤더 높이만큼 위로 숨김
+        // 이전 lastScrollY의 값보다 현재 window.scrollY의 값이 더 커진다면(즉 화면을 하단으로 이동하였다면) top의 값을 음수로 전환하여 header가 화면의 상단으로 숨도록 설정하였다.
+
+      } else {
+        // 스크롤 업 -> 헤더 보이기
+        header.style.top = '0';
+        // 상단에서 top에 transition을 넣은 이유가 스크롤이 발생하면 top을 0으로 만들어서 화면에서 이동
+      }
+
+      // 현재 스크롤 위치를 업데이트
+      lastScrollY = window.scrollY;
+    });
+
+  </script>
+  <script src="script.js"></script>
+</body>
+</html>

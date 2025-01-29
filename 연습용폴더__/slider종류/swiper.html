@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Swiper.js Example</title>
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+  <style>
+    *{
+      padding: 0;
+      margin: 0;
+      text-decoration: none;
+      list-style: none;
+      color: black;
+    }
+    body{
+      overflow: hidden;
+    }
+    /* 일반적인 swiper설정 */
+    .swiper-container {
+      position: relative;
+      width: 100%;
+      margin: auto;
+      overflow: hidden;
+    }
+    .swiper-slide {
+      border: solid 1px red;
+      height: 30vw;
+      width: 30vw;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #3a3a3a;
+      font-size: 20px;
+    }
+    .swiper-wrapper{
+    }
+
+
+
+
+
+
+
+    /* Pagination 위치 및 색상 조정 */
+    .swiper-pagination {
+      bottom: 300px; /* 하단에서의 거리 */
+      text-align: center; /* 중앙 정렬 */
+      border: solid 5px red;
+    }
+
+    /* Pagination dot의 기본 스타일 */
+    .swiper-pagination-bullet {
+      width: 12px;
+      height: 12px;
+      background-color: #2e2e2e; /* 기본 색상 */
+      opacity: 0.5; /* 투명도 */
+      transition: all 0.3s ease; /* 애니메이션 */
+    }
+
+    /* 활성화된 dot 스타일 */
+    .swiper-pagination-bullet-active {
+      background-color: #ff5722; /* 활성화된 dot의 색상 */
+      opacity: 1;
+      transform: scale(1.2); /* 크기 강조 */
+    }
+
+
+
+
+
+    .swiper-button-prev{
+      position: absolute;
+
+      right: 0;
+      color: #000; /* 기본 버튼 색상 */
+      background-color: rgba(80, 80, 80, 0.8); /* 배경 색상 */
+      width: 50px; /* 버튼 크기 */
+      height: 50px;
+      border-radius: 50%; /* 버튼을 동그랗게 */
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* 그림자 */
+    }
+
+
+      /* 버튼 위치 및 크기 조정 */
+    .swiper-button-next {
+      position: absolute;
+      right: 0;
+      color: #000; /* 기본 버튼 색상 */
+      background-color: rgba(80, 80, 80, 0.8); /* 배경 색상 */
+      width: 50px; /* 버튼 크기 */
+      height: 50px;
+      border-radius: 50%; /* 버튼을 동그랗게 */
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* 그림자 */
+    }
+
+    /* hover 상태 스타일 */
+    .swiper-button-prev:hover,
+    .swiper-button-next:hover {
+      background-color: #ff5722; /* Hover 시 배경색 변경 */
+      color: #fff; /* 화살표 색상 변경 */
+    }
+
+    /* 화살표 크기 조정 */
+    .swiper-button-prev::after,
+    .swiper-button-next::after {
+      font-size: 18px; /* 화살표 크기 */
+    }
+
+  </style>
+</head>
+<body>
+  <div class="swiper-container">
+    <div class="swiper-wrapper">
+      <!-- 슬라이드 콘텐츠 -->
+      <div class="swiper-slide">Slide 1</div>
+      <div class="swiper-slide">Slide 2</div>
+      <div class="swiper-slide">Slide 3</div>
+      <div class="swiper-slide">Slide 1</div>
+      <div class="swiper-slide">Slide 2</div>
+      <div class="swiper-slide">Slide 3</div>
+      <div class="swiper-slide">Slide 1</div>
+      <div class="swiper-slide">Slide 2</div>
+      <div class="swiper-slide">Slide 3</div>
+      <div class="swiper-slide">Slide 1</div>
+      <div class="swiper-slide">Slide 2</div>
+      <div class="swiper-slide">Slide 3</div>
+      <div class="swiper-slide">Slide 1</div>
+      <div class="swiper-slide">Slide 2</div>
+      <div class="swiper-slide">Slide 3</div>
+    </div>
+    <!-- Pagination -->
+    <div class="swiper-pagination"></div>
+    <!-- Navigation buttons -->
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+  </div>
+
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  <script>
+    const swiper = new Swiper('.swiper-container', {
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true, // Dots를 클릭 가능하게 설정이름 설정 가능
+      },
+      breakpoints: {
+        1200: { slidesPerView: 3 },
+        // 768: { slidesPerView: 3},
+        480: { slidesPerView: 3 },
+      },
+    });
+
+
+//     const swiper = new Swiper('.swiper-container', {
+//   slidesPerView: 4,
+//   spaceBetween: 20,
+//   navigation: {
+//     nextEl: '.swiper-button-next',
+//     prevEl: '.swiper-button-prev',
+//   },
+//   pagination: {
+//     el: '.swiper-pagination',
+//     clickable: true,
+//   }, 
+//   breakpoints: {
+//     1200: { slidesPerView: 1 },
+//     // 768: { slidesPerView: 3},
+//     480: { slidesPerView: 1 },
+//   },
+// });
+  </script>
+</body>
+</html>

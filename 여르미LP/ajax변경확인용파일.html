@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>이커머스 제품 목록</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+    #product-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .product {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 10px;
+      width: calc(33.33% - 20px);
+      box-sizing: border-box;
+      text-align: center;
+      cursor: pointer;
+    }
+    .product img {
+      max-width: 100%;
+      height: auto;
+    }
+    #product-detail {
+      display: none;
+      text-align: center;
+    }
+    #product-detail img {
+      max-width: 100%;
+      height: auto;
+    }
+    #back-button {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    #back-button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <div id="product-list">
+    <!-- 제품 목록이 여기에 동적으로 렌더링됩니다 -->
+  </div>
+
+  <div id="product-detail">
+    <h1 id="product-name"></h1>
+    <img id="product-image" alt="제품 이미지">
+    <p id="product-description"></p>
+    <p id="product-price"></p>
+    <button id="back-button">뒤로가기</button>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const productList = document.getElementById("product-list");
+      const productDetail = document.getElementById("product-detail");
+      const backButton = document.getElementById("back-button");
+
+      // 테스트용 JSON 데이터
+      const data = [
+        { id: 1, name: "제품 A", image: "https://via.placeholder.com/300x200?text=Product+A", description: "이 제품은 A입니다.", price: "10,000원" },
+        { id: 2, name: "제품 B", image: "https://via.placeholder.com/300x200?text=Product+B", description: "이 제품은 B입니다.", price: "15,000원" },
+        { id: 3, name: "제품 C", image: "https://via.placeholder.com/300x200?text=Product+C", description: "이 제품은 C입니다.", price: "20,000원" }
+      ];
+
+      // 제품 리스트 렌더링
+      data.forEach(product => {
+        const productBox = document.createElement("div");
+        productBox.classList.add("product");
+        productBox.dataset.id = product.id; // 제품 ID 저장
+        productBox.innerHTML = `
+          <img src="${product.image}" alt="${product.name}">
+          <h2>${product.name}</h2>
+          <p>${product.price}</p>
+        `;
+        productBox.addEventListener("click", () => {
+          showProductDetail(product);
+        });
+        productList.appendChild(productBox);
+      });
+
+      // 제품 상세 정보 표시
+      function showProductDetail(product) {
+        // URL 변경
+        window.history.pushState({ id: product.id }, '', `?product=${product.id}`);
+
+        // 상세 정보 업데이트
+        document.getElementById("product-name").textContent = product.name;
+        document.getElementById("product-image").src = product.image;
+        document.getElementById("product-description").textContent = product.description;
+        document.getElementById("product-price").textContent = product.price;
+
+        // 화면 전환
+        productList.style.display = "none";
+        productDetail.style.display = "block";
+      }
+
+      // 초기화 함수
+      function resetToMainList() {
+        productList.style.display = "flex";
+        productDetail.style.display = "none";
+        window.history.replaceState({}, '', '/'); // URL 초기화
+      }
+
+      // 뒤로가기 버튼 처리
+      backButton.addEventListener("click", resetToMainList);
+
+      // 브라우저 뒤로가기/앞으로가기 처리
+      window.addEventListener("popstate", (event) => {
+        if (event.state && event.state.id) {
+          const product = data.find(item => item.id == event.state.id);
+          if (product) {
+            showProductDetail(product);
+          }
+        } else {
+          resetToMainList();
+        }
+      });
+
+      // 초기 URL 상태 확인
+      const params = new URLSearchParams(window.location.search);
+      const productId = params.get("product");
+      if (productId) {
+        const product = data.find(item => item.id == productId);
+        if (product) {
+          showProductDetail(product);
+        }
+      }
+    });
+  </script>
+</body>
+</html>

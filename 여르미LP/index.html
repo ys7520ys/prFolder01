@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YouTube Player Example</title>
+  <style>
+    #player-container {
+      max-width: 600px;
+      margin: 20px auto;
+      text-align: center;
+    }
+    button {
+      margin: 10px;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<div id="player-container">
+  <div id="player"></div>
+  <button onclick="playVideo()">Play</button>
+  <button onclick="pauseVideo()">Pause</button>
+</div>
+
+<script>
+  let player; // YouTube Player 객체
+
+  // YouTube IFrame Player API 스크립트를 비동기로 로드
+  const tag = document.createElement('script');
+  tag.src = "https://www.youtube.com/iframe_api";
+  document.body.appendChild(tag);
+
+  // API가 로드되면 호출되는 함수
+  function onYouTubeIframeAPIReady() {
+    player = new YT.Player('player', {
+      videoId: 'YOUR_VIDEO_ID', // 재생할 YouTube 영상 ID를 입력하세요
+      events: {
+        'onReady': onPlayerReady,
+      },
+    });
+  }
+
+  // 플레이어가 준비되었을 때 호출되는 함수
+  function onPlayerReady(event) {
+    event.target.pauseVideo(); // 로드 후 대기 상태
+  }
+
+  // 재생 버튼을 클릭했을 때 실행되는 함수
+  function playVideo() {
+    if (player && typeof player.playVideo === 'function') {
+      player.playVideo();
+    }
+  }
+
+  // 일시정지 버튼을 클릭했을 때 실행되는 함수
+  function pauseVideo() {
+    if (player && typeof player.pauseVideo === 'function') {
+      player.pauseVideo();
+    }
+  }
+</script>
+
+</body>
+</html>

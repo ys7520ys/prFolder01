@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .title-area h1 {
+      text-align: center;
+      font-size: 24px;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+      opacity: 1;
+    }
+
+    .title-area h1.hidden {
+      opacity: 0;
+    }
+  </style>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+</head>
+<body>
+  <div class="title-area">
+    <h1 id="title">Hover over a button</h1>
+  </div>
+  <div class="button-area">
+    <button class="hover-button" data-title="Button 1">Button 1</button>
+    <button class="hover-button" data-title="Button 2">Button 2</button>
+    <button class="hover-button" data-title="Button 3">Button 3</button>
+    <button class="hover-button" data-title="Button 4">Button 4</button>
+  </div>
+  <script>
+    $(document).ready(function () {
+      $('.hover-button').hover(
+        function () {
+          const newTitle = $(this).data('title');
+          const $title = $('#title');
+
+          // 기존 텍스트를 숨기고 변경
+          $title.addClass('hidden'); // 텍스트 숨기기 효과
+          setTimeout(() => {
+            $title.text(newTitle).removeClass('hidden'); // 텍스트 변경 후 다시 표시
+          }, 300); // transition 시간과 동일하게 설정
+        },
+        function () {
+          const $title = $('#title');
+
+          // 기본값으로 복원
+          $title.addClass('hidden');
+          setTimeout(() => {
+            $title.text('Hover over a button').removeClass('hidden');
+          }, 300);
+        }
+      );
+    });
+  </script>
+</body> 
+</html>

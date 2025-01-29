@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3D Box Mouse Follow</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- 해당 섹션에 여러 개의 요소의 값을 생성하고 해당 요소에 hover가 이루어지면 가운데 마우스를 따라다니는 글자의 값이 변경되는 형태로 구성하는 것이 좋을 것 같다. 아니면 클릭을 진행하면 해당 내용의 값이 가운데 생성되는 형태도 좋을 것 같다. -->
+  <style>
+    body{
+      filter: blur(0px);
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    .top{
+      height: 100vh;
+    }
+    body {
+      height: 500vh;
+      background-color: rgb(228, 55, 136);
+      font-family: Arial, sans-serif;
+    }
+    .dumy{
+      position: relative;
+      height: 100vh;
+    }
+    .scene {
+      perspective: 200px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+    }
+
+    .box {
+      position: relative;
+      width: 240px;
+      height: 200px;
+      transform-style: preserve-3d;
+      transition: transform 0.1s;
+      text-align: center;
+    }
+
+    .face {
+      position: absolute;
+      width: 240px;
+      height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 40px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    .front  { transform: translateZ(100px); }
+
+  </style>
+</head>
+<body>
+
+  <div class="top"></div>
+  <div class="dumy">
+    <div class="scene">
+      <div class="box">
+        <img class="face front" src="제목_없는_아트워크.png">
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const box = document.querySelector('.box');
+
+    // 화면 전체에서 마우스 움직임에 따라 박스 회전
+    document.addEventListener('mousemove', (event) => {
+      // 화면 중심을 기준으로 마우스 위치 계산
+      const centerX = window.innerWidth / 2;
+      const centerY = window.innerHeight / 2;
+      const x = event.clientX - centerX;
+      const y = event.clientY - centerY;
+
+      // 마우스 위치에 따라 회전 각도 설정
+      const rotateX = (y / centerY) * -20; // 위/아래 움직임에 따라 X축 회전
+      const rotateY = (x / centerX) * 20;  // 좌/우 움직임에 따라 Y축 회전
+
+      // transform을 사용해 회전 적용
+      box.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+    });
+  </script>
+
+
+
+  <script src="script.js"></script>
+
+</body>
+</html>

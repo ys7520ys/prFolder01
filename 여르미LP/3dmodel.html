@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3D Model Mouse Follow</title>
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #e0e0e0;
+    }
+    model-viewer {
+      width: 600px;
+      height: 400px;
+    }
+  </style>
+</head>
+<body>
+
+<model-viewer id="model" src="my_project  1슈ㅕㅜㅕㅛㅜㅕㅛㅜㅕ.glb" alt="3D Model"
+              auto-rotate camera-controls
+              environment-image="neutral"
+              camera-orbit="30deg 90deg 2m"  
+              interaction-prompt="none">
+</model-viewer>
+
+<script>
+  const modelViewer = document.getElementById('model');
+
+  document.addEventListener('mousemove', (event) => {
+    const { innerWidth, innerHeight } = window;
+
+    // 마우스 위치 비율 계산 (-1 ~ 1 범위로 정규화)
+    const x = (event.clientX / innerWidth) * 2 - 1;
+    const y = (event.clientY / innerHeight) * 2 - 1;
+
+    // 마우스 위치에 따라 회전 각도 설정 (기본 각도 조정 값)
+    const orbitX = 90 + (y * 10); // Y축 회전: 마우스의 세로 위치에 비례, 기본 90도에서 시작
+    const orbitY = x * 30;        // X축 회전: 마우스의 가로 위치에 비례
+
+    // `camera-orbit` 속성으로 모델 회전 각도 설정
+    modelViewer.setAttribute('camera-orbit', `${orbitY}deg ${orbitX}deg 2m`);
+  });
+</script>
+
+</body>
+</html>
